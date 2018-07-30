@@ -52,61 +52,64 @@ export default class Main {
   }
 
   restart() {
-    databus.reset()
-
-    canvas.removeEventListener(
-      'touchstart',
-      this.touchHandler
-    )
-
-    this.bg = new BackGround(ctx)
-    this.player = new Player(ctx)
-    this.gameinfo = new GameInfo()
-    this.music = new Music()
-    //在此处示例话KUKU盒子对象
-    //第一个参数：图片Size，宽高等同，单位PX
-    //第二个参数：你的游戏APPID，用以调起你的专属更多游戏列表以及统计使用
-    this.KUKU = new KUKU(30, 'wxb7cc2a59211205c6')
+        databus.reset()
+    
+        canvas.removeEventListener(
+          'touchstart',
+          this.touchHandler
+        )
+    
+        this.bg = new BackGround(ctx)
+        this.player = new Player(ctx)
+        this.gameinfo = new GameInfo()
+        this.music = new Music()
+        //在此处示例话KUKU盒子对象
+        //第一个参数：图片Size，宽高等同，单位PX
+        //第二个参数：你的游戏APPID，用以调起你的专属更多游戏列表以及统计使用
+        this.KUKU = new KUKU(30, 'wxb7cc2a59211205c6')
 
     省略...
 ```
 - 在游戏画面更新render的地方调用KUKU盒子的更新方法，以微信辅助小游戏示例为例，则在render方法加上KUKU盒子的更新方法
 
 ```
-render() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-    this.bg.render(ctx)
-
-    databus.bullets
-      .concat(databus.enemys)
-      .forEach((item) => {
-        item.drawToCanvas(ctx)
-      })
-
-    this.player.drawToCanvas(ctx)
-
-    databus.animations.forEach((ani) => {
-      if (ani.isPlaying) {
-        ani.aniRender(ctx)
-      }
-    })
-
-    this.gameinfo.renderGameScore(ctx, databus.score)
-
-    // 游戏结束停止帧循环
-    if (databus.gameOver) {
-      this.gameinfo.renderGameOver(ctx, databus.score)
-
-      if (!this.hasEventBind) {
-        this.hasEventBind = true
-        this.touchHandler = this.touchEventHandler.bind(this)
-        canvas.addEventListener('touchstart', this.touchHandler)
-      }
-    }
-    //此处调用KUKU盒子的更新方法，实现图标拖动
-    this.KUKU.update(ctx)
+    省略...
+    render() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+    
+        this.bg.render(ctx)
+    
+        databus.bullets
+          .concat(databus.enemys)
+          .forEach((item) => {
+            item.drawToCanvas(ctx)
+          })
+    
+        this.player.drawToCanvas(ctx)
+    
+        databus.animations.forEach((ani) => {
+          if (ani.isPlaying) {
+            ani.aniRender(ctx)
+          }
+        })
+    
+        this.gameinfo.renderGameScore(ctx, databus.score)
+    
+        // 游戏结束停止帧循环
+        if (databus.gameOver) {
+          this.gameinfo.renderGameOver(ctx, databus.score)
+    
+          if (!this.hasEventBind) {
+            this.hasEventBind = true
+            this.touchHandler = this.touchEventHandler.bind(this)
+            canvas.addEventListener('touchstart', this.touchHandler)
+          }
+        }
+        //此处调用KUKU盒子的更新方法，实现图标拖动
+        //ctx为你的游戏绘制画布对象
+        this.KUKU.update(ctx)
   }
+  省略...
 ```
 
 ## 注意
