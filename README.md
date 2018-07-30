@@ -39,7 +39,7 @@
 ## 第二步 下载/images/kuku_icon.png
 请下载KUKU盒子图标资源到你的游戏工程images目录
 
-## 第三步 实例化一个KUKU盒子对象
+## 第三步 两行代码搞定KUKU盒子组件接入
 - 在启动游戏的地方实例化KUKU盒子对象，以微信辅助小游戏示例为例，则在下面代码块实例化KUKU盒子对象
   
 #### 第一行代码 this.KUKU = new KUKU(30, 'wxb7cc2a59211205c6')
