@@ -3,8 +3,9 @@
 1. 在游戏内部放置一个KUKU盒子图标，图标大小可自定义且可拖动；
 3. KUKU盒子图标位置在游戏内可记忆，用户下次打开游戏，位置在最后一次拖动的位置；
 4. 点击KUKU盒子图标，可进入KUKU盒子定制化更多游戏（根据appid来定制专属的游戏列表）
+5. 两行代码搞定接入
 
-## 加入KUKU盒子组件示例游戏工程介绍（微信官方辅助小游戏）
+## 微信官方辅助小游戏加入KUKU盒子更多游戏示例介绍
 ```
 ./images
 ├── kuku_icon.png                          // KUKU游戏盒子的ICON
@@ -40,6 +41,8 @@
 
 ## 第三步 实例化一个KUKU盒子对象
 - 在启动游戏的地方实例化KUKU盒子对象，以微信辅助小游戏示例为例，则在下面代码块实例化KUKU盒子对象
+  
+#### 第一行代码 this.KUKU = new KUKU(30, 'wxb7cc2a59211205c6')
 
 ```
 省略...
@@ -66,12 +69,13 @@ export default class Main {
         //在此处示例话KUKU盒子对象
         //第一个参数：图片Size，宽高等同，单位PX
         //第二个参数：你的游戏APPID，用以调起你的专属更多游戏列表以及统计使用
-       # this.KUKU = new KUKU(30, 'wxb7cc2a59211205c6') #
+        this.KUKU = new KUKU(30, 'wxb7cc2a59211205c6')
 
     省略...
 ```
 - 在游戏画面更新render的地方调用KUKU盒子的更新方法，以微信辅助小游戏示例为例，则在render方法加上KUKU盒子的更新方法
 
+#### 第二行代码  this.KUKU.update(ctx)
 ```
     省略...
     render() {
@@ -113,4 +117,4 @@ export default class Main {
 ```
 
 ## 注意
-此文档以微信官方辅助小游戏作为接入示例，如在实际接入过程中存在疑问，请联系（QQ：157085863 Email：wenxy@aiyinli.cn）
+此文档以微信官方辅助小游戏作为接入示例，如在实际接入过程中存在疑问，请联系（QQ：157085863 Email：wenxy@aiyinli.cn） 
