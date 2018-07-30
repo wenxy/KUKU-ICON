@@ -66,7 +66,7 @@ export default class Main {
         //在此处示例话KUKU盒子对象
         //第一个参数：图片Size，宽高等同，单位PX
         //第二个参数：你的游戏APPID，用以调起你的专属更多游戏列表以及统计使用
-        this.KUKU = new KUKU(30, 'wxb7cc2a59211205c6')
+       # this.KUKU = new KUKU(30, 'wxb7cc2a59211205c6') #
 
     省略...
 ```
