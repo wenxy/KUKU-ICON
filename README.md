@@ -34,7 +34,8 @@
 ```
 # 接入步骤
 ## 第一步 下载/kuku/kuku.js
-请下载KUKU盒子组件JS到你的游戏工程js目录
+请下载KUKU盒子组件JS到你的游戏工程js目录，并在使用的地方引入JS文件
+> import KUKU from './kuku/kuku'
 
 ## 第二步 下载/images/kuku_icon.png
 请下载KUKU盒子图标资源到你的游戏工程images目录
@@ -44,6 +45,7 @@
 > 在启动游戏的地方实例化KUKU盒子，以微信辅助小游戏示例为例，则在下面代码块实例化KUKU盒子对象
 
 ```
+import KUKU from './kuku/kuku'
 省略...
 export default class Main {
   constructor() {
